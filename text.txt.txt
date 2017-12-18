@@ -1,0 +1,9 @@
+inc
+movl
+inc
+dec
+print
+get
+begin
+movr
+end
