@@ -50,15 +50,18 @@ int movr(void)
         n++;
     return 0;
 }
-int inc (void)
+int inc(void)
 {
     if(tape[n]<255)
         tape[n]++;
     else
+    {
+        printf("current tape element was set to 0 to avoid char overflow");
         tape[n] = 0;
+    }
     return 0;
 }
-int dec (void)
+int dec(void)
 {
     if(tape[n]>0)
         tape[n]--;
@@ -66,7 +69,7 @@ int dec (void)
         tape[n] = 255;
     return 0;
 }
-int orders (char** a, int f, int l)
+int orders(char** a, int f, int l)
 {
     int i, m;
     m = 0;
@@ -107,7 +110,7 @@ int orders (char** a, int f, int l)
     }
     return 0;
 }
-char* space (char* s, char* a)
+char* space(char* s, char* a)
 {
     int i, j;
     j = 0;
