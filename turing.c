@@ -2,11 +2,9 @@
 #include "stdlib.h"
 #include "string.h"
 
-int size;
-int n;
+int size = 1;
+int n = 0;
 int *tape;
-size = 1;
-n = 0;
 
 int movl(void)
 {
@@ -135,7 +133,6 @@ int main()
     int num, i;
     num = 0;
     i = 0;
-    char *fname = NULL;
     FILE *file;
     file = fopen("file.txt", "r");
     if (file == NULL)
@@ -160,5 +157,6 @@ int main()
     printf("\n Tape : ");
     for(i = 0; i < size; i++)
         printf("  %d", tape[i]);
+    printf("\n");
     return 0;
 }
