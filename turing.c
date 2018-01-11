@@ -2,9 +2,9 @@
 #include "stdlib.h"
 #include "string.h"
 
+int *tape;
 int size = 1;
 int n = 0;
-int *tape;
 
 int movl(void)
 {
