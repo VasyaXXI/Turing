@@ -108,23 +108,6 @@ int orders(char** a, int f, int l)
     }
     return 0;
 }
-char* space(char* s, char* a)
-{
-    int i, j;
-    j = 0;
-    a = (char*) malloc (sizeof(char)*6);
-    for (i = 0; s[i]; i++)
-    {
-        if (s[i] != ' ' && s[i] != '\n')
-        {
-            a[j] = s[i];
-            j++;
-            a = (char*) realloc (a,(j+6)*sizeof(char));
-        }
-    }
-    a = (char*) realloc (a, j*sizeof(char));
-    return a;
-}
 
 int main()
 {
@@ -137,14 +120,26 @@ int main()
     file = fopen("file.txt", "r");
     if (file == NULL)
         printf(" Could not open file\n");
-    a = (char **) malloc ((num+1)*sizeof(char *));
+    a = (char **) malloc (255*sizeof(char *));
     while(fgets(s, 255, file))
     {
         if(s[0] != '*')
         {
-            a[num] = space(s, a[num]);
+		    int i;
+		    int counter = 0;
+		    char string[strlen(s)];
+		    for(i=0;i<strlen(s);i++)
+		    {
+		    	if(s[i] >= 'a' && s[i] <='z')
+		    	{
+		    		string[counter] = s[i];
+		    		counter++;
+				}
+			}
+			a[num] = (char*) malloc(sizeof(char) * strlen(string));
+			for(i = 0; i<strlen(string); i++)
+				a[num][i] = string[i];
             num++;
-            a = (char**) realloc (a,(num+1)*sizeof(char*));
         }
     }
     fclose(file);
